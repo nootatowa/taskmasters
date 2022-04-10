@@ -59,3 +59,7 @@ group :production do
   gem 'mysql2'
 end
 gem 'devise'
+gem 'enum_help'
+gem 'kaminari','~> 1.2.1'
+gem 'pry-byebug'
+gem 'acts_as_list'
