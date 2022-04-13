@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name"
     t.string "password"
     t.integer "status"
     t.integer "level", default: 1, null: false
@@ -44,6 +43,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", default: "", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -83,8 +83,11 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
     t.text "reward"
     t.integer "position"
     t.integer "task_point"
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_tasks_on_customer_id"
   end
 
+  add_foreign_key "tasks", "customers"
 end
