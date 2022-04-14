@@ -2,4 +2,26 @@
   <p class="list_header_title">タスク名：<%= @task.title %></p>
   <p class="list_header_title">タスク内容：<%= @task.body %></p>
   <%= link_to "タスクを完了しご褒美を受け取る",task_tasks_reward_path(@task.id) %>
+  <p>投稿日時：<%= @task.created_at.strftime('%Y/%m/%d') %></p>
+
+
+  <div>
+  <p>コメント件数：<%= @task.task_comments.count %></p>
+  <% @task.task_comments.each do |task_comment| %>
+    <%= task_comment.customer.name %>
+    <%= task_comment.created_at.strftime('%Y/%m/%d') %>
+    <% if task_comment.customer == current_customer %>
+    <%= link_to "削除", task_comment_path(task_comment.task, task_comment), method: :delete %>
+    <% end %>
+    <%= task_comment.comment %>
+
+  <% end %>
+</div>
+</div>
+<div>
+  <%= form_with model: [@task, @task_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
 

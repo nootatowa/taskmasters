@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  namespace :public do
+    get 'comments/create'
+    get 'comments/destroy'
+  end
  # 顧客用
 # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -12,10 +17,10 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-  namespace :admin do
-    get '/' => 'homes#top', as: 'top'
+  namespace :admins do
+    root "toppages#index"
   end
+
   namespace :admin do
     resources :customers, only: [:show, :index, :edit, :update]
   end
@@ -30,6 +35,7 @@ Rails.application.routes.draw do
     get "/search", to: "searchs#search"
 
     resources :tasks do
+      resources :task_comments
       get 'tasks/reward',to: "tasks#reward"
       get 'confirm'
       resource :favorites, only: [:create, :destroy]

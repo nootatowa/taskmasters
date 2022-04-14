@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "coments", force: :cascade do |t|
-    t.text "coment"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -72,6 +66,14 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "task_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "customer_id"
+    t.integer "task_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "task_tags", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -83,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
     t.text "reward"
     t.integer "position"
     t.integer "task_point"
+    t.string "privacy"
     t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
