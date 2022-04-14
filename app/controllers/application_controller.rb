@@ -17,10 +17,4 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
-
-  private
-   def not_authenticated
-    flash[:info] = 'ログインしてください'
-    redirect_to main_app.login_path #main_appのプレフィックスをつける
-   end
 end
