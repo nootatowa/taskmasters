@@ -8,8 +8,26 @@
 <div class="list_header">
   <p class="list_header_title">タスク名：<%= task.title %></p>
   <p class="list_header_title">タスク内容：<%= task.body %></p>
+  <p><%= link_to "#{task.task_comments.count} コメント", task_path(task.id) %></p>
+</div>
+</div>
+
+      <% task.cards.each do |card| %>
+      <%= link_to "しょうさい",task_card_path(task.id,card.id) %>
+      <div class="card">
+        <h3 class="card_title"><%= card.title %></h3>
+        <% if card.memo.size > 0 %>
+          <div class="card_detail is-exist"><i class="fas fa-bars"></i></div>
+        <% end %>
+      </div>
+    <% end %>
+
+  <div class="cardWrapper">
+    <div class="addCard">
+    <i class="far fa-plus-square"></i>
+    <%= link_to "タスクの詳細を追加", new_task_card_path(task), class: "addCard_link" %>
+  </div>
 </div>
 </div>
 <% end %>
-</div>
 </div>
