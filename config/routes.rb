@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  namespace :public do
-    get 'comments/create'
-    get 'comments/destroy'
-  end
+
  # 顧客用
 # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -28,17 +26,18 @@ Rails.application.routes.draw do
     post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     root "homes#top"
     get '/about' => 'homes#about'
-    resources :customers, only: [:index,:show,:edit, :update]
+    resources :customers, only: [:index,:show,:edit,:update]
     get 'customers/my_page' => 'customers#show'
     get 'customers/unsubscribe'
     get 'customers/withdraw'
     get "/search", to: "searchs#search"
 
     resources :tasks do
+      resources :cards
       resources :task_comments
       get 'tasks/reward',to: "tasks#reward"
       get 'confirm'
-      resource :favorites, only: [:create, :destroy]
+      resource :favorites, only: [:create,:destroy]
       resources :comments, only: [:create,:destroy]
     end
   end
