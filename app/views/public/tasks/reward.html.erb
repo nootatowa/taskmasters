@@ -1,1 +1,13 @@
-<%= Rinku.auto_link(@task.reward, :all, 'target="_blank"').html_safe %>
+
+     <h3 class="my-5">ご褒美を受け取りください</h3>
+      <%= Rinku.auto_link(@task.reward, :all, 'target="_blank"').html_safe %>
+
+     <div>
+        <span><strong>タスク完了とすると</strong></span></br>
+        <span><strong>レベルアップへの経験値が溜まります。投稿したタスクは削除されます。</strong></span></br>
+      </div>
+
+
+
+<%= link_to "完了としない",tasks_path,class: "button" %>
+<%= link_to "完了とする", @task, method: :delete, data: { confirm: 'このタスクを完了とし削除しますか？'},class: 'btn btn-sm btn-danger destroy_book_#{@task.id}'%>
