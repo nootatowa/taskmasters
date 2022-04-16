@@ -24,7 +24,7 @@ class Public::CustomersController < ApplicationController
     def favorites
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:task_id)
-    @favorite_tasks = Task.find(favorites)
+    @favorite_tasks = Task.where(id: favorites)
     end
 
 

@@ -2,7 +2,7 @@
   <div class="listWrapper">
 <div><%= @customer.name %></div>
 <%= link_to "編集",edit_customer_path %>
-<%= link_to "いいねした投稿",favorites_customer_path(@customer) %>
+<%= link_to "いいねした投稿",favorites_customer_path(@customer.id) %>
 
 <% @tasks.each do |task| %>
 <div class="list">
