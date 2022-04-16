@@ -23,14 +23,18 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :index, :edit, :update]
   end
   scope module: :public do
-    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
-    root "homes#top"
-    get '/about' => 'homes#about'
-    resources :customers, only: [:index,:show,:edit,:update]
-    get 'customers/my_page' => 'customers#show'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-    get "/search", to: "searchs#search"
+      post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+      root "homes#top"
+      get '/about' => 'homes#about'
+    resources :customers, only: [:index,:show,:edit,:update] do
+      member do
+      get :favorites
+      end
+      end
+      get 'customers/my_page' => 'customers#show'
+      get 'customers/unsubscribe'
+      get 'customers/withdraw'
+      get "/search", to: "searchs#search"
 
     resources :tasks do
       resources :cards
