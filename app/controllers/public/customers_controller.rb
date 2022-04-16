@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
 
+
     def show
     @customer = Customer.find(params[:id])
     @tasks = @customer.tasks
@@ -18,6 +19,7 @@ class Public::CustomersController < ApplicationController
     end
     end
 
+<<<<<<< HEAD
     def levelUp
       customer = Customer.find(params[:id])
       task = Task.find(params[:task_id])
@@ -48,6 +50,17 @@ class Public::CustomersController < ApplicationController
 
 
 
+=======
+
+
+    def favorites
+    @customer = Customer.find(params[:id])
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:task_id)
+    @favorite_tasks = Task.where(id: favorites)
+    end
+
+
+>>>>>>> origin/develop
    private
     def customer_params
     params.require(:customer).permit(:name)
