@@ -7,6 +7,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.integer :position
       t.integer :task_point
       t.string :privacy
+      t.string :status
       t.references :customer, foreign_key: true, null: false
       t.timestamps
     end

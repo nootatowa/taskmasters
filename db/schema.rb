@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2022_04_14_002139) do
     t.integer "position"
     t.integer "task_point"
     t.string "privacy"
+    t.string "status"
     t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
