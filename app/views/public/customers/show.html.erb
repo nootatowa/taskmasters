@@ -2,6 +2,7 @@
   <div class="listWrapper">
 <div><%= @customer.name %></div>
 <%= link_to "編集",edit_customer_path %>
+<%= link_to "いいねした投稿",favorites_customer_path(@customer) %>
 
 <% @tasks.each do |task| %>
 <div class="list">
@@ -29,5 +30,22 @@
   </div>
 </div>
 </div>
+
+<% if task.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to task_favorites_path(task), method: :delete do %>
+       <i class="fas fa-flag"></i><%= task.favorites.count %> 応援する
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to task_favorites_path(task), method: :post do %>
+        <i class="fas fa-flag"></i><%= task.favorites.count %>　応援する
+      <% end %>
+    </p>
+    <% end %>
+
+
+
 <% end %>
 </div>

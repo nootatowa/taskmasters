@@ -6,7 +6,7 @@
   <% end %>
   </div>
   <% end
-  
+
 <%= link_to list_card_path(list, card), class:"cardDetail_link" do %>
       <div class="card">
         <h3 class="card_title"><%= card.title %></h3>
@@ -15,8 +15,8 @@
         <% end %>
       </div>
     <% end %>
-  
-  
+
+
 
   <div class="cardWrapper">
     <div class="addCard">
@@ -26,5 +26,5 @@
 </div>
 
 <!--差し込んだ記述-->
- <%= render '/tasks/card',task: @task %>
-<%= link_to "しょうさい",task_card_path(task.id,card.id) %>
+ <%= render '/public/tasks/card',task: @task,card: @card %>
+

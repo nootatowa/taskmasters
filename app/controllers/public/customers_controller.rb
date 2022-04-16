@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
 
+
     def show
     @customer = Customer.find(params[:id])
     @tasks = @customer.tasks
@@ -17,6 +18,16 @@ class Public::CustomersController < ApplicationController
       render :edit
     end
     end
+
+
+
+    def favorites
+    @customer = Customer.find(params[:id])
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:task_id)
+    @favorite_tasks = Task.find(favorites)
+    end
+
+
    private
     def customer_params
     params.require(:customer).permit(:name)
