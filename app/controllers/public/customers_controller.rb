@@ -21,14 +21,6 @@ class Public::CustomersController < ApplicationController
 
 
 
-
-
-
-
-
-
-
-
     def favorites
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:task_id)
