@@ -36,6 +36,10 @@ Rails.application.routes.draw do
       get 'customers/withdraw'
       get "/search", to: "searchs#search"
 
+      post '/tasks/:id/done' => 'tasks#done',   as: 'done'
+
+
+
     resources :tasks do
       resources :cards
       resources :task_comments
