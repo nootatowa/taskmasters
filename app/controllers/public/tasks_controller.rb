@@ -27,6 +27,14 @@ class Public::TasksController < ApplicationController
   def done
     @task = Task.find_by(id: params[:id])
     @task.update(status: "Done")
+
+    @done_customer = current_customer
+    @done_customer.update(experience_point: @done_customer.experience_point + 10)
+    @new_level_task_customer = LevelSetting.where(threshold:  @done_customer.experience_point..).first.level
+    if  @done_customer.level < @new_level_task_customer
+        @done_customer.update(level: @new_level_task_customer)
+    end
+
     @tasks = Task.all.includes(:customer)
     redirect_to task_tasks_reward_path(@task.id)
   end

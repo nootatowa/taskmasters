@@ -9,7 +9,7 @@
             <div class="list_header_action">
             <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(task)) %>
             <%= link_to content_tag(:i, '', class: 'fas fa-trash-restore-alt'), task, method: :delete, data: { confirm: "#{task.title}を削除して大丈夫ですか？" } %>
-            <%= button_to 'Done', done_path(task), method: :post %>
+            <%= button_to '完了', done_path(task), method: :post %>
             <p><%= link_to "#{task.task_comments.count} コメント", task_path(task.id) %></p>
             <%= link_to "詳細へ",task_path(task.id) %>
 
