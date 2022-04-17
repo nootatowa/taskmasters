@@ -6,4 +6,5 @@ class Customer < ApplicationRecord
          has_many :tasks, dependent: :destroy
          has_many :task_comments, dependent: :destroy
           has_many :favorites, dependent: :destroy
+
 end

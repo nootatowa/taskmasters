@@ -1,6 +1,9 @@
 <div class="topPage">
   <div class="listWrapper">
 <div><%= @customer.name %></div>
+<%= link_to "編集",edit_customer_path %>
+<%= link_to "いいねした投稿",favorites_customer_path(@customer.id) %>
+<%= link_to "退会する",customer_unsubscribe_path(@customer.id) %>
 <div>レベル<%= @customer.level %></div>
 <div>経験値<%= @customer.experience_point %></div>
 
