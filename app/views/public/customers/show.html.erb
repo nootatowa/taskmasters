@@ -1,15 +1,23 @@
 <div class="topPage">
   <div class="listWrapper">
 <div><%= @customer.name %></div>
+<<<<<<< HEAD
 <%= link_to "編集",edit_customer_path %>
 <%= link_to "いいねした投稿",favorites_customer_path(@customer.id) %>
 <%= link_to "退会する",unsubscribe_path %>
+=======
+<div>レベル<%= @customer.level %></div>
+<div>経験値<%= @customer.experience_point %></div>
+
+
+<th><div><%= link_to "編集",edit_customer_path %></div></th>
+
+>>>>>>> origin/develop
 
 <% @tasks.each do |task| %>
 <div class="list">
 <div class="list_header">
   <p class="list_header_title">タスク名：<%= task.title %></p>
-  <p class="list_header_title">タスク内容：<%= task.body %></p>
   <p><%= link_to "#{task.task_comments.count} コメント", task_path(task.id) %></p>
 </div>
 </div>
@@ -49,4 +57,6 @@
 
 
 <% end %>
+<th><div><%= link_to "応援した投稿一覧",favorites_customer_path(@customer.id) %></div></th>
+
 </div>

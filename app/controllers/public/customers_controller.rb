@@ -40,7 +40,6 @@ class Public::CustomersController < ApplicationController
     @favorite_tasks = Task.where(id: favorites)
     end
 
-
    private
     def customer_params
     params.require(:customer).permit(:name)

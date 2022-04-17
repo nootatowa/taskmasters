@@ -38,8 +38,15 @@ Rails.application.routes.draw do
       get 'customers/withdraw'
       patch 'customers/withdraw'
 
+<<<<<<< HEAD
       get "/search", to: "searchs#search"
       post '/tasks/:id/done' => 'tasks#done',   as: 'done'
+=======
+      post '/tasks/:id/done' => 'tasks#done',   as: 'done'
+
+
+
+>>>>>>> origin/develop
     resources :tasks do
       resources :cards
       resources :task_comments
