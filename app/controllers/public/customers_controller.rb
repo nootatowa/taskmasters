@@ -23,7 +23,7 @@ class Public::CustomersController < ApplicationController
      @customer = current_customer
     end
 
-    def withdrawal
+    def withdraw
     @customer = Customer.find(params[:id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)
