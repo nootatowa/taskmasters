@@ -3,6 +3,7 @@
 <div><%= @customer.name %></div>
 <%= link_to "編集",edit_customer_path %>
 <%= link_to "いいねした投稿",favorites_customer_path(@customer.id) %>
+<%= link_to "退会する",unsubscribe_path %>
 
 <% @tasks.each do |task| %>
 <div class="list">

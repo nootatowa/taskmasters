@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2022_04_14_002139) do
     t.integer "status"
     t.integer "level", default: 1, null: false
     t.integer "experience_point", default: 0, null: false
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

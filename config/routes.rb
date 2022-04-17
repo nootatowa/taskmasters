@@ -32,10 +32,14 @@ Rails.application.routes.draw do
       end
       end
       get 'customers/my_page' => 'customers#show'
-      get 'customers/unsubscribe'
-      get 'customers/withdraw'
-      get "/search", to: "searchs#search"
 
+
+      get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+      get 'customers/withdraw'
+      patch 'customers/withdraw'
+
+      get "/search", to: "searchs#search"
+      post '/tasks/:id/done' => 'tasks#done',   as: 'done'
     resources :tasks do
       resources :cards
       resources :task_comments
