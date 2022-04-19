@@ -1,7 +1,7 @@
 class Admin::TaskCommentsController < ApplicationController
   def index
-    @task_comments = TaskComment.all
-    @customers = Customer.all
+    @task_comments = TaskComment.page(params[:page])
+    @customers = Customer.page(params[:page])
   end
 
   def destroy

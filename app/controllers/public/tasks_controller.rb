@@ -4,7 +4,7 @@ class Public::TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
+    @tasks = Task.page(params[:page])
   end
 
   def show
