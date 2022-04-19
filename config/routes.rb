@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  namespace :admin do
+    resources :task_comments, only: [:index,:destroy]
+  end
 
  # 顧客用
 # URL /customers/sign_in ...
@@ -15,12 +17,9 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  namespace :admins do
-    root "toppages#index"
-  end
 
   namespace :admin do
-    resources :customers, only: [:show, :index, :edit, :update]
+    resources :customers, only: [:index,:show, :edit, :update]
   end
   scope module: :public do
       post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
