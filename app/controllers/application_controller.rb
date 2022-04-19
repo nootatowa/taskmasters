@@ -1,15 +1,21 @@
 class ApplicationController < ActionController::Base
+    before_action :authenticate_admin!
+    before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-before_action :configure_permitted_parameters, if: :devise_controller?
-
   def after_sign_in_path_for(resource)
-    customer_path(current_customer.id)
+     if resource.is_a?(Admin)
+      admin_customers_path
+     else
+      root_path
+     end
   end
-
   def after_sign_out_path_for(resource)
-    about_path
+     if resource == :admin
+      new_admin_session_path
+     else
+      about_path
+     end
   end
 
   protected
@@ -18,9 +24,4 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
-  private
-   def not_authenticated
-    flash[:info] = 'ログインしてください'
-    redirect_to main_app.login_path #main_appのプレフィックスをつける
-   end
 end
