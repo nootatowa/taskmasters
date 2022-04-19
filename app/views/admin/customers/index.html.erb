@@ -7,8 +7,8 @@
           <tr>
             <th>会員ID</th>
             <th>名前</th>
-            <th>レベル</th>
             <th>メールアドレス</th>
+            <th>レベル</th>
             <th>ステータス</th>
           </tr>
         </thead>
@@ -35,6 +35,7 @@
         </tbody>
       </table>
       <%= link_to "コメント一覧",admin_task_comments_path %>
+      <%= paginate @customers %>
     </div>
   </div>
 </div>
