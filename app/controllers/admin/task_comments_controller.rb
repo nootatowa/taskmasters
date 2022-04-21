@@ -5,8 +5,8 @@ class Admin::TaskCommentsController < ApplicationController
   end
 
   def destroy
-    TaskComment.find_by(params[:id]).destroy
-    render "index"
+    TaskComment.find(params[:id]).destroy
+    redirect_to admin_task_comments_path
   end
 
   private

@@ -8,7 +8,7 @@ class Public::TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find_by(id: params[:id])
+    @task = Task.find(params[:id])
     @task_comment = TaskComment.new
   end
 
