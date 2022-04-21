@@ -3,8 +3,12 @@ class Public::TaskCommentsController < ApplicationController
     @task = Task.find_by(params[:task_id])
     @comment = current_customer.task_comments.new(comment_params)
     @comment.task_id = @task.id
-     @comment.save
-    flash.now[:notice] = 'コメントを投稿しました'
+    if @comment.save
+      flash.now[:notice] = 'コメントを投稿しました'
+      render :tasks_comments  #render先にjsファイルを指定
+    else
+      render 'tasks/show'
+    end
   end
 
 
