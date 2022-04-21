@@ -35,16 +35,15 @@ Rails.application.routes.draw do
       patch 'customers/:id/withdraw'  =>'customers#withdraw',as: 'customer_withdraw'
       get "/search", to: "searchs#search"
       post '/tasks/:id/done' => 'tasks#done',   as: 'done'
+      resources :task_comments, only: [:create,:destroy]
 
 
 
     resources :tasks do
       resources :cards
-      resources :task_comments
       get 'tasks/reward',to: "tasks#reward"
       get 'confirm'
       resource :favorites, only: [:create,:destroy]
-      resources :comments, only: [:create,:destroy]
     end
   end
 end

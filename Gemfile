@@ -64,4 +64,4 @@ gem 'kaminari','~> 1.2.1'
 gem 'pry-byebug'
 gem 'acts_as_list'
 gem 'rinku'
-
+gem 'jquery-rails'

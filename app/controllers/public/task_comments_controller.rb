@@ -1,16 +1,17 @@
 class Public::TaskCommentsController < ApplicationController
   def create
-    @task = Task.find(params[:task_id])
+    @task = Task.find_by(params[:task_id])
     @comment = current_customer.task_comments.new(comment_params)
     @comment.task_id = @task.id
-    @comment.save
-
-    redirect_to tasks_path
+     @comment.save
+    flash.now[:notice] = 'コメントを投稿しました'
   end
 
+
   def destroy
-      TaskComment.find(params[:id]).destroy
-      redirect_to tasks_path(params[:task_id])
+    TaskComment.find(params[:id]).destroy
+    @task = Task.find(params[:task_id])
+    render :task_comments
   end
 
    private
