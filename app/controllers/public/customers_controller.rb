@@ -3,6 +3,7 @@ class Public::CustomersController < ApplicationController
 
     def show
     @customer = Customer.find(params[:id])
+    @task = Task.find_by(id: params[:id])
     @tasks = @customer.tasks.page(params[:page])
     end
 

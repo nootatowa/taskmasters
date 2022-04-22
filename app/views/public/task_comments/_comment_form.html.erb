@@ -1,0 +1,7 @@
+<%= form_with(model: task_comment, url: task_task_comments_path(task.id), local:false ) do |f| %>
+  <!--エラーメッセージ-->
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+
+
