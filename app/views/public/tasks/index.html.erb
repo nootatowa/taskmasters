@@ -44,20 +44,9 @@
  <% end %>
 
 
-
-  <% if task.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to task_favorites_path(task), method: :delete do %>
-       <i class="fas fa-flag"></i><%= task.favorites.count %> 応援する
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to task_favorites_path(task), method: :post do %>
-        <i class="fas fa-flag"></i><%= task.favorites.count %>　応援する
-      <% end %>
-    </p>
-    <% end %>
+    <div id="fas fa-flag<%= task.id %>">
+     <%= render "public/favorites/favorite", task: task %>
+    </div>
 
              <% elsif task.privacy == "2" && task.customer.id == current_customer.id %>
              <h2 class="list_header_title"><%= task.title %></h2>

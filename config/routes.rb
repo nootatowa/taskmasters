@@ -27,24 +27,23 @@ Rails.application.routes.draw do
       get '/about' => 'homes#about'
     resources :customers, only: [:index,:show,:edit,:update] do
       member do
-      get :favorites
+        get :favorites
       end
-      end
-      get 'customers/my_page' => 'customers#show'
-      get 'customers/:id/unsubscribe' =>'customers#unsubscribe',as: 'customer_unsubscribe'
-      patch 'customers/:id/withdraw'  =>'customers#withdraw',as: 'customer_withdraw'
-      get "/search", to: "searchs#search"
-      post '/tasks/:id/done' => 'tasks#done',   as: 'done'
+    end
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/:id/unsubscribe' =>'customers#unsubscribe',as: 'customer_unsubscribe'
+    patch 'customers/:id/withdraw'  =>'customers#withdraw',as: 'customer_withdraw'
+    get "/search", to: "searchs#search"
+    post '/tasks/:id/done' => 'tasks#done',   as: 'done'
 
 
 
     resources :tasks do
+      resources :task_comments, only: [:create,:destroy]
       resources :cards
-      resources :task_comments
       get 'tasks/reward',to: "tasks#reward"
       get 'confirm'
       resource :favorites, only: [:create,:destroy]
-      resources :comments, only: [:create,:destroy]
     end
   end
 end

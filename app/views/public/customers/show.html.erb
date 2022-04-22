@@ -37,23 +37,14 @@
 </div>
 </div>
 
-<% if task.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to task_favorites_path(task), method: :delete do %>
-       <i class="fas fa-flag"></i><%= task.favorites.count %> 応援する
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to task_favorites_path(task), method: :post do %>
-        <i class="fas fa-flag"></i><%= task.favorites.count %>　応援する
-      <% end %>
-    </p>
-    <% end %>
 
 
 
-<% end %>
+  <div id="fas fa-flag<%= @task.id %>">
+    <%= render "public/favorites/favorite", task: @task %>
+  </div>
+  <% end %>
+
 <th><div><%= link_to "応援した投稿一覧",favorites_customer_path(@customer.id) %></div></th>
-     <%= paginate @tasks %>
+  <%= paginate @tasks %>
 </div>
