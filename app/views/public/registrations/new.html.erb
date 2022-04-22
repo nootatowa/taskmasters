@@ -1,46 +1,69 @@
- <div class="container">
-      <div class="row">
-       <table class="customers">
-          <thead class="thead text-center">
-            <tr>
-              <th><h2 class="top-header">新規会員登録</h2></th>
-            </tr>
-          </thead>
-        </table>
-         <table class="product-new mt-5">
-          <tbody>
+<div class='container mt-5'>
+  <div class='row'>
+    <table class="customers">
+      <thead class="thead text-center">
+        <tr>
+          <th><h2>最初から　はじめる</h2></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <div class= 'row mb-5 mt-4'>
+    <p class='col-5 offset-5'>こちらで新規登録を行ってください</p>
+  </div>
 <%= form_with model: @customer, url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <tr>
-  <th><%= f.label :名前 %></th>
-  <th><%= f.text_field :name ,class:"col-sm-8"%></th>
-  </tr>
+    <div class="row mb-3">
+      <label for="inputEmail3" class="col-sm-2 col-form-label offset-2">名前</label>
+      <div class="col-sm-8">
+       <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
+      </div>
+    </div>
 
-  <tr>
-    <th><%= f.label :メールアドレス%></th>
-    <th><%= f.email_field :email, autofocus: true, autocomplete: "email",class:"col-sm-8" %></th>
-  </tr>
+    <div class="row mb-3">
+      <label for="inputEmail3" class="col-sm-2 col-form-label offset-2">メールアドレス</label>
+      <div class="col-sm-8">
+       <%= f.email_field :email, class: "form-control", placeholder: "emailを入力してください" ,autocomplete: "email" %>
+      </div>
+    </div>
 
-  <tr>
-    <th><%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em></th>
+    <div class="row mb-4">
+      <label for="inputPassword3" class="col-sm-2 col-form-label offset-2">パスワード
+       <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上)</em></label>
     <% end %>
-    <th><%= f.password_field :password, autocomplete: "new-password",class:"col-sm-8" %></th>
-  </tr>
-  <tr>
-  <th><%= f.label :パスワード確認 %></th>
-  <th><%= f.password_field :password_confirmation, autocomplete: "new-password",class:"col-sm-8" %></th>
-  </tr>
 
-  <tr>
-  <th></th>
-  <td><%= f.submit "新規登録" ,class: 'button' %></td>
-  </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <h5 class="mx-auto mt-5">既に登録済みの方  <%= link_to "こちら", new_customer_session_path %> からログインしてください</h5>
+      <div class="col-sm-8">
+       <%= f.password_field :password, class: "form-control", placeholder:"パスワードを入力してください", autocomplete: "off" %>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <label for="inputPassword3" class="col-sm-2 col-form-label offset-2">パスワード確認</label>
+      <div class="col-sm-8">
+       <%= f.password_field :password_confirmation, class:"form-control", placeholder: "パスワードを再度入力してください", autocomplete: "off" %>
+      </div>
+    </div>
+
+ <div class="row mb-5">
+      <div class="col-2 offset-4">
+       <%= f.submit "新規登録", class:"button"%>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <table class="customers">
+      <thead class="thead text-center">
+        <tr>
+          <th>会員登録がお済みの方</th>
+        </tr>
+      </thead>
+    </table>
   </div>
-</div>
+  <div class="row mt-4">
+  <h5 class="col-5 offset-4">既に登録済みの方  <%= link_to "こちら", new_customer_session_path %> からログインしてください</h5>
+ </div>
+ </div>
+

@@ -1,28 +1,38 @@
-<div class="topPage">
-  <div class="listWrapper">
-    <h1>ここはtask/index</h1>
-    <% @tasks.each do |task| %>
-      <div class="list">
-        <div class="list_header">
-        　<% if task.privacy =="1" %>
-          <h2 class="list_header_title"><%= task.title %></h2>
-            <div class="list_header_action">
-            <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(task)) %>
-            <%= link_to content_tag(:i, '', class: 'fas fa-trash-restore-alt'), task, method: :delete, data: { confirm: "#{task.title}を削除して大丈夫ですか？" } %>
-            <%= button_to '完了', done_path(task), method: :post %>
-            <p><%= link_to "#{task.task_comments.count} コメント", task_path(task.id) %></p>
-            <%= link_to "詳細へ",task_path(task.id) %>
+  <div class="topPage">
+    <h1>タスク一覧</h1>
+     <div class="listWrapper">
+      <% @tasks.each do |task| %>
+        <div class="list">
+          <div class="list_header">
+        　  <% if task.privacy =="1" %>
+        　     <%= link_to task_path(task.id), class: "list_name" do %>
+                <%= task.title %></h2>
+            <% end %>
+              <div class="list_header_action">
+              <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(task)) %>
+              <%= link_to content_tag(:i, '', class: "fas fa-trash-restore-alt"), task, method: :delete, data: { confirm: "#{task.title}を削除して大丈夫ですか？" } %>
+              <%= link_to content_tag(:i, '', class: "far fa-comment"), task_path(task.id)%>
+              <%= "#{task.task_comments.count} " %>
 
-
-      <% task.cards.each do |card| %>
-      <%= link_to "しょうさい",task_card_path(task.id,card.id) %>
-      <div class="card">
-        <h3 class="card_title"><%= card.title %></h3>
-        <% if card.memo.size > 0 %>
-          <div class="card_detail is-exist"><i class="fas fa-bars"></i></div>
-        <% end %>
+        </div>
       </div>
-    <% end %>
+
+            <%= button_to '完了', done_path(task), method: :post %>
+
+
+      <div class="cardWrapper">
+      <% task.cards.each do |card| %>
+   <%= link_to task_card_path(task, card), class:"cardDetail_link" do %>
+        <div class="card">
+          <h3 class="card_title"><%= card.title %></h3>
+          <% if card.memo.size > 0 %>
+            <div class="card_detail is-exist"><i class="fas fa-bars"></i></div>
+          <% end %>
+        </div>
+      <% end %>
+
+
+
 
   <div class="cardWrapper">
     <div class="addCard">
@@ -31,6 +41,8 @@
   </div>
 </div>
 </div>
+ <% end %>
+
 
 
   <% if task.favorited_by?(current_customer) %>
@@ -55,8 +67,7 @@
             <%= link_to content_tag(:i, '', class: 'fas fa-trash-restore-alt'), task, method: :delete, data: { confirm: "#{task.title}を削除して大丈夫ですか？" } %>
             </div>
       <% end %>
-        </div>
-      </div>
+
 
 
 
@@ -64,4 +75,4 @@
      <%= paginate @tasks %>
   </div>
 </div>
-
+</div>

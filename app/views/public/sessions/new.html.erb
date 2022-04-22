@@ -1,31 +1,38 @@
-<h2>つづきから　はじめる</h2>
-
 <div class='container mt-5'>
   <div class='row'>
     <table class="customers">
       <thead class="thead text-center">
         <tr>
-          <th>ログイン</th>
+          <th><h2>つづきから　はじめる</h2></th>
         </tr>
       </thead>
     </table>
   </div>
 
   <div class= 'row mb-5 mt-4'>
-    <p class='col-5 offset-4'>会員の方はこちらからログイン</p>
+    <p class='col-5 offset-5'>会員の方はこちらからログイン</p>
   </div>
   <%= form_with model: @customer, url: customer_session_path do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
+    <div class="row mb-3">
+      <label for="inputEmail3" class="col-sm-2 col-form-label offset-2">名前</label>
+      <div class="col-sm-8">
+      <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
+      </div>
+    </div>
+
     <div class="row mb-3">
       <label for="inputEmail3" class="col-sm-2 col-form-label offset-2">メールアドレス</label>
       <div class="col-sm-8">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control"%>
+      <%= f.email_field :email, class: "form-control", placeholder: "emailを入力してください" ,autocomplete: "email" %>
       </div>
     </div>
 
     <div class="row mb-4">
       <label for="inputPassword3" class="col-sm-2 col-form-label offset-2">パスワード</label>
       <div class="col-sm-8">
-      <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
+      <%= f.password_field :password, class: "form-control", placeholder:"パスワードを入力してください", autocomplete: "off" %>
       </div>
     </div>
 
@@ -46,6 +53,6 @@
     </table>
   </div>
   <div class="row mt-4">
-    <p class='col-5 offset-4'><%= render "public/shared/links" %></p>
+    <h5 class="col-5 offset-4">登録がお済みでない方  <%= link_to "こちら", new_customer_registration_path %> からログインしてください</h5>
  </div>
  </div>
