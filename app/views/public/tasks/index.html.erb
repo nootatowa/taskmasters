@@ -1,56 +1,9 @@
 <div class="topPage">
+  <h2>タスク一覧</h2>
   <div class="listWrapper">
-    <h1>ここはtask/index</h1>
     <% @tasks.each do |task| %>
-      <div class="list">
-        <div class="list_header">
-        　<% if task.privacy =="1" %>
-          <h2 class="list_header_title"><%= task.title %></h2>
-            <div class="list_header_action">
-            <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(task)) %>
-            <%= link_to content_tag(:i, '', class: 'fas fa-trash-restore-alt'), task, method: :delete, data: { confirm: "#{task.title}を削除して大丈夫ですか？" } %>
-            <%= button_to '完了', done_path(task), method: :post %>
-            <p><%= link_to "#{task.task_comments.count} コメント", task_path(task.id) %></p>
-            <%= link_to "詳細へ",task_path(task.id) %>
-
-
-      <% task.cards.each do |card| %>
-      <%= link_to "しょうさい",task_card_path(task.id,card.id) %>
-      <div class="card">
-        <h3 class="card_title"><%= card.title %></h3>
-        <% if card.memo.size > 0 %>
-          <div class="card_detail is-exist"><i class="fas fa-bars"></i></div>
-        <% end %>
-      </div>
+      <%= render "index", task: task %>
     <% end %>
-
-  <div class="cardWrapper">
-    <div class="addCard">
-    <i class="far fa-plus-square"></i>
-    <%= link_to "タスクの詳細を追加", new_task_card_path(task), class: "addCard_link" %>
+    <%= paginate @tasks %>
   </div>
 </div>
-</div>
-
-    <div id="fas fa-flag<%= task.id %>">
-     <%= render "public/favorites/favorite", task: task %>
-    </div>
-
-             <% elsif task.privacy == "2" && task.customer.id == current_customer.id %>
-             <h2 class="list_header_title"><%= task.title %></h2>
-             <div class="list_header_action">
-               <i class="fas fa-key"></i>
-            <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(task)) %>
-            <%= link_to content_tag(:i, '', class: 'fas fa-trash-restore-alt'), task, method: :delete, data: { confirm: "#{task.title}を削除して大丈夫ですか？" } %>
-            </div>
-      <% end %>
-        </div>
-      </div>
-
-
-
-     <% end %>
-     <%= paginate @tasks %>
-  </div>
-</div>
-

@@ -11,7 +11,6 @@ class Public::TaskCommentsController < ApplicationController
   def destroy
     TaskComment.find(params[:id]).destroy
     @task = Task.find(params[:task_id])
-    render :task_comments
   end
 
    private
