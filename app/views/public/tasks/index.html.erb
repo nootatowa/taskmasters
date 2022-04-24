@@ -4,6 +4,10 @@
     <% @tasks.each do |task| %>
       <%= render "index", task: task %>
     <% end %>
-    <%= paginate @tasks %>
   </div>
+    <div class="row">
+      <div class="col-md-10 text-right link", style=text-decoration:underline>
+         <%= paginate @tasks %>
+      </div>
+    </div>
 </div>

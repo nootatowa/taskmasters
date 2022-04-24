@@ -33,8 +33,10 @@
           <% end %>
         </div>
       <div class="addCard">
+        <% if customer_signed_in? && current_customer.id == task.customer_id %>
         <i class="fas fa-plus-square"></i>
         <%= link_to "タスクの詳細を追加", new_task_card_path(task), class: "addCard_link" %>
+        <% end %>
       </div>
       <%= render "public/favorites/favorite", task: task %>
     </div>
