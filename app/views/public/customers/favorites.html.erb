@@ -1,7 +1,11 @@
-<p>ここはいいね一覧ページ</p>
-<%= link_to @customer.name, customer_path(@customer.id) %>
-<i class="fa fa-heart unlike-btn"></i>
-<%= @favorite_tasks.length %>
-<% @favorite_tasks.each do |task|%>
-<%=task.title %>
-<% end %>
+<div class="topPage">
+  <p>ここはいいね一覧ページ</p>
+    <div class="listWrapper">
+      <% @favorite_tasks.each do |task|%>
+        <%= render "public/tasks/index", task: task %>
+      <% end %>
+    </div>
+</div>
+
+
+
