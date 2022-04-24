@@ -64,6 +64,12 @@
             }
           }
         }
+          .addCard {
+          color: #8c8c8c;
+          &_link {
+            color: #8c8c8c;
+          }
+        }
         .list_name{
           text-decoration: none !important;
         }

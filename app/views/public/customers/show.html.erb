@@ -40,9 +40,7 @@
 
 
 
-  <div id="fas fa-flag<%= @task.id %>">
-    <%= render "public/favorites/favorite", task: @task %>
-  </div>
+    <%= render "public/favorites/favorite", task: task %>
   <% end %>
 
 <th><div><%= link_to "応援した投稿一覧",favorites_customer_path(@customer.id) %></div></th>

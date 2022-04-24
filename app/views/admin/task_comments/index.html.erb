@@ -15,7 +15,7 @@
               <td>
                 <%= task_comment.customer.name %>
                 <%= task_comment.comment %>
-                <%= link_to "削除", admin_task_comment_path(task_comment.task, task_comment), method: :delete %>
+                <%= link_to "削除", admin_task_comment_path(task_comment), method: :delete %>
                 </td>
             </tr>
           <% end %>

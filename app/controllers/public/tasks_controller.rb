@@ -1,10 +1,12 @@
 class Public::TasksController < ApplicationController
+
   def new
     @task = Task.new
   end
 
   def index
-    @tasks = Task.page(params[:page])
+    @tasks = Task.where.not("privacy = 2 AND customer_id <> #{current_customer.id}").page(params[:page])
+    @customer = Customer.all
   end
 
   def show
@@ -75,5 +77,3 @@ class Public::TasksController < ApplicationController
 
 
 end
-
-
