@@ -4,19 +4,23 @@
       <li class="header_menu_title"><%= link_to "Taskmasters", root_path, class: "nav-link" %></li>
       <li>
         <ul class="header_menu_inner">
+         <div class ="text-left" >
           <%= link_to  about_path, class: "nav-link" do %>
           <span class="mr-1">about</span>
           <i class="fas fa-globe"></i>
           <% end %>
+         </div>
           <% if customer_signed_in? %>
           <%= link_to customer_path(current_customer.id), class: "nav-link" do %>
               <span class="mr-1"><%= current_customer.name %>さん</span>
               <i class="far fa-user-circle"></i>
           <% end %>
-          <%= link_to new_task_path, class: "nav-link" do %>
+          <div class ="text-right" >
+          <%= link_to new_task_path, class: "nav-link text-right" do %>
               <span class="mr-1">タスク作成</span>
               <i class="fas fa-edit"></i>
           <% end %>
+          </div>
           <%= link_to tasks_path, class: "nav-link" do%>
               <span class="mr-1"> タスク一覧</span>
               <i class="fas fa-clipboard-list"></i>
