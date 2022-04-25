@@ -40,11 +40,7 @@ class Public::TasksController < ApplicationController
          @done_customer.save
       end
     end
-    # @new_level_task_customer = LevelSetting.where(threshold:  @done_customer.experience_point..).first.level
-    # byebug
-    # # if  @done_customer.level < @new_level_task_customer
-    # #     @done_customer.update(level: @new_level_task_customer)
-    # # end
+
 
     redirect_to task_tasks_reward_path(@task.id)
   end

@@ -8,21 +8,15 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
 }
-
-
-
 .notice,
 .alert {
   display: none;
 }
 
-// header
 .footer{
   background: #026aa7;
   color:white;
 width: 100%;
-// text-align: center;
-// padding: 30px 0;
  position: absolute;/*←絶対位置*/
 bottom: 0; /*下に固定*/
 }
@@ -36,8 +30,9 @@ bottom: 0; /*下に固定*/
       position: relative;
       margin: 0;
       padding: 0;
-      justify-content: space-between;
+      justify-content: right;
       align-items: center;
+
       li {
         list-style: none;
         color: #fff;
@@ -83,8 +78,4 @@ bottom: 0; /*下に固定*/
 .common{
   width: 30%;
   background-color: #eeeeee;
-}
-.my-5{
-    background-color: #24140e;
-    color: #e6b422;
 }

@@ -1,4 +1,4 @@
- .topPage {
+.topPage {
   min-height: 93vh;
   padding-top: 30px;
   background: #bababa;
@@ -7,7 +7,7 @@
     display: flex;
     height: 100%;
     align-items: baseline;
- .list {
+    .list {
       position: relative;
       background: #e2e4e6;
       padding: 10px;
@@ -29,6 +29,7 @@
     }
   }
 }
+.fas fa-trash-restore-alt {
         margin-left: 40px;
 
 }
@@ -62,4 +63,13 @@
               }
             }
           }
+        }
+          .addCard {
+          color: #8c8c8c;
+          &_link {
+            color: #8c8c8c;
+          }
+        }
+        .list_name{
+          text-decoration: none !important;
         }
