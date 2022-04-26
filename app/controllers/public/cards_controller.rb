@@ -9,9 +9,10 @@ class Public::CardsController < ApplicationController
   end
 
   def create
+    @task = Task.find_by(id: params[:task_id])
     @card = Card.new(card_params)
     if @card.save
-      redirect_to customer_path(current_customer.id)
+      redirect_to customer_path(current_customer.id),flash: { notice: 'タスク詳細を追加しました' }
     else
       render action: :new
     end
@@ -24,7 +25,7 @@ class Public::CardsController < ApplicationController
   def update
     @card = Card.find_by(id: params[:id])
     if @card.update(card_params)
-      redirect_to customer_path(current_customer.id)
+      redirect_to customer_path(current_customer.id),flash: { notice: 'タスク詳細を変更しました' }
     else
       render action: :edit
     end
@@ -33,7 +34,7 @@ class Public::CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
-      redirect_to customer_path(current_customer.id)
+      redirect_to customer_path(current_customer.id),flash: { notice: 'タスク詳細を削除しました' }
   end
 
   private
