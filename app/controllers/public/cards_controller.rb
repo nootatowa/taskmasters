@@ -11,7 +11,7 @@ class Public::CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     if @card.save
-      redirect_to tasks_path
+      redirect_to customer_path(current_customer.id)
     else
       render action: :new
     end
@@ -24,7 +24,7 @@ class Public::CardsController < ApplicationController
   def update
     @card = Card.find_by(id: params[:id])
     if @card.update(card_params)
-      redirect_to tasks_path
+      redirect_to customer_path(current_customer.id)
     else
       render action: :edit
     end
@@ -33,7 +33,7 @@ class Public::CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
-      redirect_to tasks_path
+      redirect_to customer_path(current_customer.id)
   end
 
   private

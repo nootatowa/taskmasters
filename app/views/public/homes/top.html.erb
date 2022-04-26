@@ -1,1 +1,21 @@
-<h1>TOPページ</h1>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <h1> <i class="fas fa-tasks"></i><strong>Taskmasters</strong>  </h1></br>
+      <p>自分が投稿したタスクを完了させたり、応援すると経験値が貯まります。</p>
+      <p> 経験値が貯まるとレベルが上がります。最大５レベル目指して頑張りましょう!</p>
+      <div class="btn-wrapper col-10 mx-auto">
+         <div class="row">
+          <%= link_to 'ゲストログイン',homes_guest_sign_in_path, class: "btn btn-primary btn-sm btn-block mb-4 sign_up" %>
+        </div>
+        <div class="row">
+          <%= link_to 'ログイン',new_customer_session_path, class: "btn btn-warning btn-sm btn-block mb-4 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to '新規登録',new_customer_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

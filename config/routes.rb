@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   scope module: :public do
       post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
       root "homes#top"
-      get '/about' => 'homes#about'
     resources :customers, only: [:index,:show,:edit,:update] do
       member do
         get :favorites

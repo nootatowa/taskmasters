@@ -4,12 +4,6 @@
       <li class="header_menu_title"><%= link_to "Taskmasters", root_path, class: "nav-link" %></li>
       <li>
         <ul class="header_menu_inner">
-         <div class ="text-left" >
-          <%= link_to  about_path, class: "nav-link" do %>
-          <span class="mr-1">about</span>
-          <i class="fas fa-globe"></i>
-          <% end %>
-         </div>
           <% if customer_signed_in? %>
           <%= link_to customer_path(current_customer.id), class: "nav-link" do %>
               <span class="mr-1"><%= current_customer.name %>さん</span>
@@ -42,6 +36,12 @@
 
 
             <% else %>
+             <div class ="text-left" >
+                <%= link_to  root_path, class: "nav-link" do %>
+                <span class="mr-1">about</span>
+                <i class="fas fa-globe"></i>
+                <% end %>
+             </div>
               <%= link_to new_customer_registration_path, class: 'nav-link text-light' do %>
                 <span class="icon">新規登録</span>
                 <i class="fas fa-user-plus"></i>
