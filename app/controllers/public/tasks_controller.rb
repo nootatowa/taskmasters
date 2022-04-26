@@ -55,7 +55,7 @@ class Public::TasksController < ApplicationController
   def update
     @task = Task.find_by(id: params[:id])
     if @task.update(task_params)
-    redirect_to tasks_path
+      redirect_to customer_path(current_customer.id)
     else render action: :edit
     end
   end
@@ -63,7 +63,7 @@ class Public::TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to tasks_path
+      redirect_to customer_path(current_customer.id)
   end
 
   private
