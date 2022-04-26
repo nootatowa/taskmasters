@@ -14,9 +14,9 @@ class Public::CustomersController < ApplicationController
     def update
       @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to tasks_path
+      redirect_to tasks_path,flash: { notice: '名前を変更しました' }
     else
-      render :edit
+      render :edit,flash: { alert: '文字を入力してください' }
     end
     end
 
@@ -29,8 +29,7 @@ class Public::CustomersController < ApplicationController
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to root_path
+    redirect_to root_path,flash: { notice: '退会が完了しました' }
     end
 
 

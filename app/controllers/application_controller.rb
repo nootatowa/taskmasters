@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
      if resource.is_a?(Admin)
       admin_customers_path
      else
-      customer_path(@customer.id)
+      customer_path(current_customer.id)
      end
   end
   def after_sign_out_path_for(resource)

@@ -21,8 +21,10 @@ class Public::TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-    redirect_to tasks_path
-    else render action: :new
+    redirect_to tasks_path,flash: { notice: 'タスクの投稿が完了しました' }
+    else
+      flash.now[:alert] = 'メッセージを入力してください。'
+      render action: :new
     end
   end
 
@@ -42,7 +44,7 @@ class Public::TasksController < ApplicationController
     end
 
 
-    redirect_to task_tasks_reward_path(@task.id)
+    redirect_to task_tasks_reward_path(@task.id),flash: { notice: 'タスク完了! 経験値が５上がりました' }
   end
 
 
@@ -55,7 +57,7 @@ class Public::TasksController < ApplicationController
   def update
     @task = Task.find_by(id: params[:id])
     if @task.update(task_params)
-      redirect_to customer_path(current_customer.id)
+      redirect_to customer_path(current_customer.id),flash: { notice: 'タスクを変更しました' }
     else render action: :edit
     end
   end
@@ -63,7 +65,7 @@ class Public::TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-      redirect_to customer_path(current_customer.id)
+      redirect_to customer_path(current_customer.id),flash: { notice: 'タスクの削除が完了しました' }
   end
 
   private

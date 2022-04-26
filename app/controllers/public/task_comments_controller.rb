@@ -4,12 +4,13 @@ class Public::TaskCommentsController < ApplicationController
     @comment = current_customer.task_comments.new(comment_params)
     @comment.task_id = @task.id
      @comment.save
-      flash.now[:notice] = 'コメントを投稿しました'
+     flash.now[:notice] = 'コメントを投稿しました'
   end
 
 
   def destroy
     TaskComment.find(params[:id]).destroy
+    flash.now[:alert] = 'コメントを削除しました'
     @task = Task.find(params[:task_id])
   end
 
