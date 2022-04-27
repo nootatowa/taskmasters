@@ -7,6 +7,7 @@ body {
   padding-bottom: 40px;
   box-sizing: border-box;
   min-height: 100vh;
+  background: aliceblue;
 }
 .notice,
 .alert {
@@ -14,14 +15,14 @@ body {
 }
 
 .footer{
-  background: #026aa7;
+  background: #01a0fe;
   color:white;
 width: 100%;
  position: fixed;/*←絶対位置*/
 bottom: 0; /*下に固定*/
 }
 .header{
-  background: #026aa7;
+  background: #01a0fe;
   padding: 10px;
   .nav {
     .header_menu {
@@ -42,7 +43,7 @@ bottom: 0; /*下に固定*/
       }
       &_title {
         position: absolute;
-        left: 50%;
+        left: 10%;
         top: 50%;
         transform: translate(-50%, -50%);
         font-size: 25px;
@@ -77,7 +78,7 @@ bottom: 0; /*下に固定*/
 
 .common{
   width: 30%;
-  background-color: #eeeeee;
+  background-color: #d0fdff;
 }
 .flash {
   color: $black;

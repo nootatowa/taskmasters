@@ -6,7 +6,8 @@
         <ul class="header_menu_inner">
           <% if customer_signed_in? %>
           <%= link_to customer_path(current_customer.id), class: "nav-link" do %>
-              <span class="mr-1"><%= current_customer.name %>さん</span>
+              <span class="mr-1"><%= current_customer.name %></span>
+              (Lv.<%= current_customer.level %>)
               <i class="far fa-user-circle"></i>
           <% end %>
           <div class ="text-right" >

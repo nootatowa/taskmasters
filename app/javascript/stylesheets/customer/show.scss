@@ -1,7 +1,7 @@
 .topPage {
   min-height: 93vh;
   padding-top: 30px;
-  background: #bababa;
+  background: #d0fdff;
   overflow-x: scroll;
   overflow-y: scroll;
   padding-bottom: 120px;
@@ -11,7 +11,7 @@
     align-items: baseline;
     .list {
       position: relative;
-      background: #e2e4e6;
+      background: lightgreen;
       padding: 10px;
       margin-left: 20px;
       min-width: 250px;
@@ -67,9 +67,9 @@
           }
         }
           .addCard {
-          color: #8c8c8c;
+          color: black;
           &_link {
-            color: #8c8c8c;
+            color: black;
           }
         }
         .list_name{

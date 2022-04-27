@@ -1,8 +1,15 @@
 class Public::CardsController < ApplicationController
+  before_action :correct_customer, only: [:edit, :update]
 
   def new
     @card = Card.new
     @task = Task.find_by(id: params[:task_id])
+    if @task.customer == current_customer.id
+       render action: :new
+
+    else
+      redirect_to tasks_path
+    end
   end
 
   def show
@@ -43,6 +50,10 @@ class Public::CardsController < ApplicationController
     params.require(:card).permit(:title, :memo, :task_id)
   end
 
-
+  def correct_customer
+      @card = Card.find(params[:id])
+      @customer = @card.task.customer
+      redirect_to(tasks_path) unless @customer == current_customer
+  end
 
 end

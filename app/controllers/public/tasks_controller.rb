@@ -1,4 +1,5 @@
 class Public::TasksController < ApplicationController
+  before_action :correct_customer, only: [:edit, :update]
 
   def new
       @task = Task.new
@@ -71,6 +72,12 @@ class Public::TasksController < ApplicationController
   private
   def task_params
       params.require(:task).permit(:title,:body,:reward,:privacy).merge(customer: current_customer)
+  end
+
+  def correct_customer
+      @task = Task.find(params[:id])
+      @customer = @task.customer
+      redirect_to(tasks_path) unless @customer == current_customer
   end
 
 
