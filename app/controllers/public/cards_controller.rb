@@ -1,4 +1,5 @@
 class Public::CardsController < ApplicationController
+
   def new
     @card = Card.new
     @task = Task.find_by(id: params[:task_id])
@@ -41,5 +42,7 @@ class Public::CardsController < ApplicationController
   def card_params
     params.require(:card).permit(:title, :memo, :task_id)
   end
+
+
 
 end
