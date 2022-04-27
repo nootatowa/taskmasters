@@ -14,9 +14,13 @@
             <tr>
               <td>
                 <%= task_comment.customer.name %>
+              </td>
+              <td>
                 <%= task_comment.comment %>
+              </td>
+              <td>
                 <%= link_to "削除", admin_task_comment_path(task_comment), method: :delete %>
-                </td>
+              </td>
             </tr>
           <% end %>
         </tbody>

@@ -1,5 +1,6 @@
 class Public::TasksController < ApplicationController
-  before_action :correct_customer, only: [:edit, :update]
+  before_action :correct_customer, only: [:edit, :updategit ]
+  before_action :correct_customer_reward, only: [:reward]
 
   def new
       @task = Task.new
@@ -22,7 +23,7 @@ class Public::TasksController < ApplicationController
   def create
       @task = Task.new(task_params)
       if @task.save
-      redirect_to tasks_path,flash: { notice: 'タスクの投稿が完了しました' }
+      redirect_to customer_path(current_customer.id),flash: { notice: 'タスクの投稿が完了しました' }
       else
         flash.now[:alert] = 'メッセージを入力してください。'
         render action: :new
@@ -44,12 +45,8 @@ class Public::TasksController < ApplicationController
         end
       end
 
-
     redirect_to task_tasks_reward_path(@task.id),flash: { notice: 'タスク完了! 経験値が５上がりました' }
   end
-
-
-
 
   def edit
       @task = Task.find_by(id: params[:id])
@@ -80,5 +77,10 @@ class Public::TasksController < ApplicationController
       redirect_to(tasks_path) unless @customer == current_customer
   end
 
+  def correct_customer_reward
+      task = Task.find(params[:task_id])
+      @customer = task.customer
+      redirect_to(tasks_path) unless @customer == current_customer
+  end
 
 end

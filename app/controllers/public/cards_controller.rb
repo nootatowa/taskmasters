@@ -1,14 +1,14 @@
 class Public::CardsController < ApplicationController
   before_action :correct_customer, only: [:edit, :update]
+  before_action :correct_customer_new, only: [:new]
 
   def new
-    @card = Card.new
-    @task = Task.find_by(id: params[:task_id])
-    if @task.customer == current_customer.id
-       render action: :new
-
+    @task = Task.find(params[:task_id])
+    if params[:task_id].to_i == @task.id
+      @card = Card.new
+      @task = Task.find_by(id: params[:task_id])
     else
-      redirect_to tasks_path
+      redirect_to(tasks_path)
     end
   end
 
@@ -53,7 +53,15 @@ class Public::CardsController < ApplicationController
   def correct_customer
       @card = Card.find(params[:id])
       @customer = @card.task.customer
+      binding.pry
       redirect_to(tasks_path) unless @customer == current_customer
   end
+  
+  def correct_customer_new
+      task = Task.find(params[:task_id])
+      @customer = task.customer
+      redirect_to(tasks_path) unless @customer == current_customer
+  end
+
 
 end
