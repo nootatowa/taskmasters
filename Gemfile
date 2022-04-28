@@ -65,8 +65,5 @@ gem 'kaminari','~> 1.2.1'
 gem 'pry-byebug'
 gem 'acts_as_list'
 gem 'rinku'
-<<<<<<< HEAD
 gem 'jquery-rails'
 gem 'rails-i18n'
-=======
->>>>>>> ba90e9bb6192786418e88fafae891f37f3ada2c0
