@@ -2,6 +2,7 @@
   <h2>タスク一覧</h2>
   <div class="listWrapper">
     <% @tasks.each do |task| %>
+<<<<<<< HEAD
       <%= render "index", task: task %>
     <% end %>
   </div>
@@ -11,5 +12,21 @@
       </div>
     </div>
 </div>
+=======
+      <%= link_to "詳細へ",task_path(task.id) %>
+      <div class="list">
+        <div class="list_header">
+          <h2 class="list_header_title"><%= task.title %></h2>
+          <h2 class="list_header_title"><%= task.body %></h2>
+            <div class="list_header_action">
+            <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(task)) %>
+            <%= link_to content_tag(:i, '', class: 'fas fa-trash-restore-alt'), task, method: :delete, data: { confirm: "#{task.title}を削除して大丈夫ですか？" } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
+>>>>>>> ba90e9bb6192786418e88fafae891f37f3ada2c0

@@ -1,4 +1,5 @@
 <div class="topPage">
+<<<<<<< HEAD
   <h6>ユーザー詳細ページ</h6>
   <div class="form-group row">
     <div style="text-align:center"><h><%= @customer.name %></h5>
@@ -21,3 +22,20 @@
 </div>
 
 
+
+=======
+  <div class="listWrapper">
+<div><%= @customer.name %></div>
+<%= link_to "編集",edit_customer_path %>
+
+<% @tasks.each do |task| %>
+<div class="list">
+<div class="list_header">
+  <p class="list_header_title">タスク名：<%= task.title %></p>
+  <p class="list_header_title">タスク内容：<%= task.body %></p>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+>>>>>>> ba90e9bb6192786418e88fafae891f37f3ada2c0
