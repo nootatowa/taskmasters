@@ -1,4 +1,5 @@
 class Public::CardsController < ApplicationController
+  before_action :authenticate_customer!
   before_action :correct_customer, only: [:edit, :update]
   before_action :correct_customer_new, only: [:new]
 
@@ -56,7 +57,7 @@ class Public::CardsController < ApplicationController
       binding.pry
       redirect_to(tasks_path) unless @customer == current_customer
   end
-  
+
   def correct_customer_new
       task = Task.find(params[:task_id])
       @customer = task.customer

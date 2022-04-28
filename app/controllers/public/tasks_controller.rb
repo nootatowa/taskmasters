@@ -1,4 +1,5 @@
 class Public::TasksController < ApplicationController
+  before_action :authenticate_customer!
   before_action :correct_customer, only: [:edit, :updategit ]
   before_action :correct_customer_reward, only: [:reward]
 
