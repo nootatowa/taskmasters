@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
 
   namespace :admin do
     resources :task_comments, only: [:index,:destroy]
   end
 
+=======
+>>>>>>> ba90e9bb6192786418e88fafae891f37f3ada2c0
  # 顧客用
 # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :admin do
+<<<<<<< HEAD
     resources :customers, only: [:index,:show, :edit, :update]
   end
   scope module: :public do
@@ -30,6 +34,18 @@ Rails.application.routes.draw do
         get :favorites
       end
     end
+=======
+    get '/' => 'homes#top', as: 'top'
+  end
+  namespace :admin do
+    resources :customers, only: [:show, :index, :edit, :update]
+  end
+  scope module: :public do
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+    root "homes#top"
+    get '/about' => 'homes#about'
+    resources :customers, only: [:index,:show,:edit, :update]
+>>>>>>> ba90e9bb6192786418e88fafae891f37f3ada2c0
     get 'customers/my_page' => 'customers#show'
     get 'customers/:id/unsubscribe' =>'customers#unsubscribe',as: 'customer_unsubscribe'
     patch 'customers/:id/withdraw'  =>'customers#withdraw',as: 'customer_withdraw'
@@ -39,11 +55,18 @@ Rails.application.routes.draw do
 
 
     resources :tasks do
+<<<<<<< HEAD
       resources :task_comments, only: [:create,:destroy]
       resources :cards
       get 'tasks/reward',to: "tasks#reward"
       get 'confirm'
       resource :favorites, only: [:create,:destroy]
+=======
+      get 'tasks/reward',to: "tasks#reward"
+      get 'confirm'
+      resource :favorites, only: [:create, :destroy]
+      resources :comments, only: [:create,:destroy]
+>>>>>>> ba90e9bb6192786418e88fafae891f37f3ada2c0
     end
   end
 end
