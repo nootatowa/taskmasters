@@ -2,6 +2,7 @@ class Public::TasksController < ApplicationController
   before_action :authenticate_customer!
   before_action :correct_customer, only: [:edit, :updategit ]
   before_action :correct_customer_reward, only: [:reward]
+  before_action :set_task, only: %i(done edit update)
 
   def new
       @task = Task.new
@@ -32,7 +33,6 @@ class Public::TasksController < ApplicationController
   end
 
   def done
-      @task = Task.find_by(id: params[:id])
       @task.update(status: "Done")
       @tasks = Task.all.includes(:customer)
 
@@ -50,11 +50,9 @@ class Public::TasksController < ApplicationController
   end
 
   def edit
-      @task = Task.find_by(id: params[:id])
   end
 
   def update
-      @task = Task.find_by(id: params[:id])
       if @task.update(task_params)
         redirect_to customer_path(current_customer.id),flash: { notice: 'タスクを変更しました' }
       else render action: :edit
@@ -82,6 +80,10 @@ class Public::TasksController < ApplicationController
       task = Task.find(params[:task_id])
       @customer = task.customer
       redirect_to(tasks_path) unless @customer == current_customer
+  end
+
+  def set_task
+    @task = Task.find_by(id: params[:id])
   end
 
 end
