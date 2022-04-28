@@ -2,6 +2,7 @@ class Public::CardsController < ApplicationController
   before_action :authenticate_customer!
   before_action :correct_customer, only: [:edit, :update]
   before_action :correct_customer_new, only: [:new]
+  before_action :set_card, only: %i(show edit update)
 
   def new
     @task = Task.find(params[:task_id])
@@ -14,7 +15,6 @@ class Public::CardsController < ApplicationController
   end
 
   def show
-    @card = Card.find_by(id: params[:id])
   end
 
   def create
@@ -28,11 +28,9 @@ class Public::CardsController < ApplicationController
   end
 
   def edit
-    @card = Card.find_by(id: params[:id])
   end
 
   def update
-    @card = Card.find_by(id: params[:id])
     if @card.update(card_params)
       redirect_to customer_path(current_customer.id),flash: { notice: 'タスク詳細を変更しました' }
     else
@@ -52,17 +50,20 @@ class Public::CardsController < ApplicationController
   end
 
   def correct_customer
-      @card = Card.find(params[:id])
-      @customer = @card.task.customer
-      binding.pry
-      redirect_to(tasks_path) unless @customer == current_customer
+    @card = Card.find(params[:id])
+    @customer = @card.task.customer
+    redirect_to(tasks_path) unless @customer == current_customer
   end
 
   def correct_customer_new
-      task = Task.find(params[:task_id])
-      @customer = task.customer
-      redirect_to(tasks_path) unless @customer == current_customer
+    task = Task.find(params[:task_id])
+    @customer = task.customer
+    redirect_to(tasks_path) unless @customer == current_customer
   end
 
+
+  def set_card
+    @card = Card.find_by(id: params[:id])
+  end
 
 end

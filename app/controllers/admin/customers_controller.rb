@@ -1,8 +1,8 @@
 class Admin::CustomersController < ApplicationController
     before_action :authenticate_admin!
+    before_action :set_customer, only: %i(show edit update)
 
     def show
-    @customer = Customer.find(params[:id])
     end
 
     def index
@@ -10,18 +10,21 @@ class Admin::CustomersController < ApplicationController
     end
 
     def edit
-      @customer = Customer.find(params[:id])
     end
 
     def update
-      customer = Customer.find(params[:id])
-      customer.update(customer_params)
+      @customer.update(customer_params)
       redirect_to admin_customers_path
     end
 
     private
 
     def customer_params
-      params.require(:customer).permit(:email, :is_deleted)
+      params.require(:customer).permit(:name, :email, :is_deleted)
     end
+
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
+
 end

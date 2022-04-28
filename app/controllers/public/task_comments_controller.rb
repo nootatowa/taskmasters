@@ -19,6 +19,5 @@ class Public::TaskCommentsController < ApplicationController
   def comment_params
     params.require(:task_comment).permit(:comment)
   end
+
 end
-
-

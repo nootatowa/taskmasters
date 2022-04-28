@@ -1,6 +1,7 @@
 class Public::FavoritesController < ApplicationController
+  before_action :set_favorite, only: %i(create destroy)
+
   def create
-    @task = Task.find(params[:task_id])
     favorite = current_customer.favorites.new(task_id: @task.id)
     favorite.save
     @likes_customer = current_customer
@@ -14,7 +15,6 @@ class Public::FavoritesController < ApplicationController
     end
   end
   def destroy
-    @task = Task.find(params[:task_id])
     favorite = current_customer.favorites.find_by(task_id: @task.id)
     favorite.destroy
   end
@@ -23,6 +23,10 @@ class Public::FavoritesController < ApplicationController
 
   private
   def task_params
+    @task = Task.find(params[:task_id])
+  end
+
+  def set_favorite
     @task = Task.find(params[:task_id])
   end
 
