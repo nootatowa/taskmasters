@@ -1,4 +1,4 @@
-<h4><%= @customer.name %><%= @customer.name %>さんの会員情報編集</h4>
+<h4><%= @customer.name %>さんの会員情報編集</h4>
   <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
   <table>
     <tr>
@@ -16,8 +16,8 @@
     <tr>
       <th><%= f.label :about, "会員ステータス" %></th>
     	<th>
-    	  <%= f.radio_button :is_deleted, true %>有効
-        <%= f.radio_button :is_deleted, false %>退会
+    	  <%= f.radio_button :is_deleted, false %>有効
+        <%= f.radio_button :is_deleted,true %>退会
       </th>
     </tr>
   </table>

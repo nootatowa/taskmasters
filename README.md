@@ -1,24 +1,33 @@
-# README
+## サイト概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+タスクをこなしレベルを上げ成長を実感できるサイト
 
-Things you may want to cover:
+### サイトテーマ
 
-* Ruby version
+自身のタスクを楽しく管理
 
-* System dependencies
+### テーマを選んだ理由
 
-* Configuration
+自分自身タスク管理が苦手で達成感を感じられるタスク管理アプリが欲しいと思った。目標に対してご褒美を設定することでモチベーションの低下を防げるのではと思った。
 
-* Database creation
+### ターゲットユーザ
 
-* Database initialization
+日々のタスク管理が苦手な方、モチベーションを保つのが苦手な方
 
-* How to run the test suite
+### 主な利用シーン
 
-* Services (job queues, cache servers, search engines, etc.)
+何か目標ができた時。日々のタスクを管理したい時。やることが多く頭の中を整理したい時。
 
-* Deployment instructions
+## 設計書
 
-* ...
+
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材

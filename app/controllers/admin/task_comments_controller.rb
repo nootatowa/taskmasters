@@ -1,4 +1,6 @@
 class Admin::TaskCommentsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @task_comments = TaskComment.page(params[:page])
     @customers = Customer.page(params[:page])

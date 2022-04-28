@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
-
+    before_action :authenticate_customer!
+    before_action :ensure_correct_customer, only: [:edit,:update,:unsubscribe,:show,:favorites]
 
     def show
     @customer = Customer.find(params[:id])
@@ -43,5 +44,12 @@ class Public::CustomersController < ApplicationController
    private
     def customer_params
     params.require(:customer).permit(:name)
+    end
+
+    def ensure_correct_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
+      redirect_to tasks_path
+    end
     end
 end
