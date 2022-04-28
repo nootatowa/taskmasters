@@ -3,6 +3,19 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   movies = Movie.create({{ name: 'Star Wars' }, { name: 'Lord of the Rings' }})
 #   Character.create(name: 'Luke', movie: movies.first)
 
+  LevelSetting.create([
+  {level: 2,
+  threshold: 10},
+
+  {level: 3,
+  threshold: 20},
+
+  {level: 4,
+  threshold: 30},
+
+  {level: 5,
+  threshold: 50},
+])
