@@ -14,12 +14,8 @@ class Public::TasksController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
       @task = Task.find(params[:id])
       @task_comment = TaskComment.new
-=======
-    @task = Task.find_by(id: params[:id])
->>>>>>> ba90e9bb6192786418e88fafae891f37f3ada2c0
   end
 
   def reward
@@ -71,7 +67,7 @@ class Public::TasksController < ApplicationController
 
   private
   def task_params
-      params.require(:task).permit(:title,:body,:reward).merge(customer: current_customer)
+      params.require(:task).permit(:title,:body,:reward,:privacy).merge(customer: current_customer)
   end
 
   def correct_customer

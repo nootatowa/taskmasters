@@ -4,14 +4,8 @@ class Public::CustomersController < ApplicationController
     before_action :set_public_customer, only: %i(show update withdraw favorites)
 
     def show
-<<<<<<< HEAD
       @task = Task.find_by(id: params[:id])
       @tasks = @customer.tasks.page(params[:page])
-=======
-    @customer = Customer.find(params[:id])
-    @tasks = @customer.tasks
-    # @task = Task.new
->>>>>>> ba90e9bb6192786418e88fafae891f37f3ada2c0
     end
 
     def edit
