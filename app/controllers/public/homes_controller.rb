@@ -5,6 +5,6 @@ class Public::HomesController < ApplicationController
       customer.name = "ゲスト"
     end
     sign_in customer
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to customer_path(current_customer.id), notice: 'ゲストユーザーとしてログインしました。'
     end
 end

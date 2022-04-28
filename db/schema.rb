@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_023058) do
+ActiveRecord::Schema.define(version: 2022_04_28_024219) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,14 +20,18 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "name"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "coments", force: :cascade do |t|
-    t.text "coment"
+  create_table "cards", force: :cascade do |t|
+    t.string "title", limit: 255, null: false
+    t.text "memo", limit: 1000
+    t.integer "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_cards_on_task_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -49,6 +53,8 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "task_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -72,6 +78,14 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "task_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "customer_id"
+    t.integer "task_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "task_tags", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -83,11 +97,14 @@ ActiveRecord::Schema.define(version: 2022_04_09_023058) do
     t.text "reward"
     t.integer "position"
     t.integer "task_point"
+    t.string "privacy"
+    t.string "status"
     t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_tasks_on_customer_id"
   end
 
+  add_foreign_key "cards", "tasks"
   add_foreign_key "tasks", "customers"
 end

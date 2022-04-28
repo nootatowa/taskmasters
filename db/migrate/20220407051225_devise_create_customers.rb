@@ -10,7 +10,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.integer :status
       t.integer :level, null: false, default: 1
       t.integer :experience_point, null: false, default: 0
-      t.boolean :is_deleted
+      t.boolean :is_deleted,default: false
 
       ## Recoverable
       t.string   :reset_password_token
@@ -47,3 +47,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
     # add_index :customers, :unlock_token,         unique: true
   end
 end
+
+
+

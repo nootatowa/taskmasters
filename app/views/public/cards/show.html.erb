@@ -1,0 +1,24 @@
+<div class='carddetailPage'>
+  <div class="container">
+    <div class="cardContents">
+      <div class="cardContents_title">
+        <div>やること</div>
+        <h2><%= @card.title %></h2>
+      </div>
+      <div class="cardContents_memo">
+        <div>メモ</div>
+        <div><%= @card.memo %></div>
+      </div>
+      <div class="cardContents_listStatus">
+        <div>タスク名</div>
+        <div><%= @card.task.title %></div>
+      </div>
+        <% if customer_signed_in? && current_customer.id == @card.task.customer_id %>
+          <div class="cardContents_btnArea">
+          <%= link_to '編集する', edit_task_card_path(@card.task, @card), class: "edit_btn" %>
+          <%= link_to '削除をする', task_card_path(@card.task, @card), class: "text-danger delete_btn", method: :delete, data: { confirm: "削除して大丈夫ですか?" } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

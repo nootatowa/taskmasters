@@ -1,0 +1,42 @@
+<div class="list">
+        <div>
+        <%= task.customer.name %>
+        Lv.  <%= task.customer.level %>
+      </div>
+  <div class="list_header">
+    <% if task.privacy == "2" %>
+      <i class="fas fa-key"></i>
+    <% end %>
+    <%= link_to task_path(task.id), class: "list_name" do %>
+      <%= task.title %>
+      <div class="list_header_action">
+        <% if customer_signed_in? && current_customer.id == task.customer_id %>
+          <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(task)) %>
+          <%= link_to content_tag(:i, '', class: "fas fa-trash-restore-alt"), task, method: :delete, data: { confirm: "#{task.title}を削除して大丈夫ですか？" } %>
+          <%= button_to '完了', done_path(task), method: :post %>
+        <% end %>
+        <%= link_to content_tag(:i, '', class: "far fa-comment"), task_path(task.id)%>
+        <%= "#{task.task_comments.count} " %>
+      </div>
+    <% end %>
+  </div>
+        <div class="cardWrapper">
+          <% task.cards.each do |card| %>
+            <%= link_to task_card_path(task, card), class:"cardDetail_link" do %>
+              <div class="card">
+                <h3 class="card_title"><%= card.title %></h3>
+                <% if card.memo.size > 0 %>
+                  <div class="card_detail is-exist"><i class="fas fa-bars"></i></div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <div class="addCard">
+        <% if customer_signed_in? && current_customer.id == task.customer_id %>
+        <i class="fas fa-plus-square"></i>
+        <%= link_to "タスクの詳細を追加", new_task_card_path(task), class: "addCard_link" %>
+        <% end %>
+      </div>
+      <%= render "public/favorites/favorite", task: task %>
+    </div>

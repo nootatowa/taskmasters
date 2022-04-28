@@ -4,11 +4,12 @@
       <% if @task.errors.any? %>
         <p class="text-danger">タイトルは1～255文字以内で入力してください</p>
       <% end %>
+      <%= f.select :privacy, [["公開", 1], ["非公開", 2]], include_blank: "選択して下さい" %>
       <%= f.label :title %>
       <%= f.text_field :title, class: "form-control listName", placeholder: "タスク名" %>
       <%= f.text_field :body, class: "form-control listName", placeholder: "タスク内容" %>
       <%= f.text_field :reward, class: "form-control listName", placeholder: "ご褒美内容" %>
-      <div class="text-center"><%= f.submit "編集する", class: "btn btn-info" %></div>
+        <div class="text-center"><%= f.submit "編集する", class: "btn btn-info" %></div>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,11 @@
+<div class="topPage">
+  <p>ここはいいね一覧ページ</p>
+    <div class="listWrapper">
+      <% @favorite_tasks.each do |task|%>
+        <%= render "public/tasks/index", task: task %>
+      <% end %>
+    </div>
+</div>
+
+
+

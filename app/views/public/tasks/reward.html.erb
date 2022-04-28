@@ -1,1 +1,22 @@
-<%= Rinku.auto_link(@task.reward, :all, 'target="_blank"').html_safe %>
+<div class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col" style="text-align: center">
+       <h2 class="my-5">タスク完了おめでとうございます！</h2>
+        <%= Rinku.auto_link(@task.reward, :all, 'target="_blank"').html_safe %>
+         <div>
+          <span><strong>下記より</strong></span></br>
+          <span><strong>投稿したタスクを削除できます。</strong></span></br>
+         </div>
+      </div>
+    </div>
+     <div class="row mt-5 d-flex justify-content-center">
+      <div class="col-2">
+        <%= link_to "削除しない",tasks_path,class: "btn btn-sm btn-success" %>
+      </div>
+       <div class="col-1">
+        <%= link_to "削除する", @task, method: :delete, data: { confirm: 'このタスクを完了とし削除しますか？'},class: 'btn btn-sm btn-danger destroy_book_#{@task.id}'%>
+       </div>
+     </div>
+  </div>
+</div>

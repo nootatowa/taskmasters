@@ -1,15 +1,24 @@
 <div class="topPage">
-  <div class="listWrapper">
-<div><%= @customer.name %></div>
-<%= link_to "編集",edit_customer_path %>
+  <h6>ユーザー詳細ページ</h6>
+  <div class="form-group row">
+    <div style="text-align:center"><h><%= @customer.name %></h5>
+       <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_customer_path) %>
+        Lv.<%= @customer.level %>
+        exp<%= @customer.experience_point %>
+    </div>
+      <div class="col-10">
+        <p>応援した投稿
+          <%= link_to "一覧を見る",favorites_customer_path(@customer.id) %>
+        </p>
+      </div>
+  </div>
+    <div class="listWrapper">
+        <% @tasks.each do |task| %>
+        <%= render "public/tasks/index", task: task %>
+      <% end %>
+    </div>
+      <%= paginate @tasks %>
+</div>
 
-<% @tasks.each do |task| %>
-<div class="list">
-<div class="list_header">
-  <p class="list_header_title">タスク名：<%= task.title %></p>
-  <p class="list_header_title">タスク内容：<%= task.body %></p>
-</div>
-</div>
-<% end %>
-</div>
-</div>
+
+

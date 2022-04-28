@@ -2,18 +2,28 @@ body {
   overflow: visible;
 }
 
+.wrapper {
+  position: relative;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: aliceblue;
+  font-family: serif;
+}
 .notice,
 .alert {
   display: none;
 }
 
-// header
 .footer{
-  background: #026aa7;
+  background: #01a0fe;
   color:white;
+width: 100%;
+ position: fixed;/*←絶対位置*/
+bottom: 0; /*下に固定*/
 }
 .header{
-  background: #026aa7;
+  background: #01a0fe;
   padding: 10px;
   .nav {
     .header_menu {
@@ -22,8 +32,9 @@ body {
       position: relative;
       margin: 0;
       padding: 0;
-      justify-content: space-between;
+      justify-content: right;
       align-items: center;
+
       li {
         list-style: none;
         color: #fff;
@@ -33,7 +44,7 @@ body {
       }
       &_title {
         position: absolute;
-        left: 50%;
+        left: 10%;
         top: 50%;
         transform: translate(-50%, -50%);
         font-size: 25px;
@@ -56,3 +67,28 @@ body {
       }
     }
   }
+.customer_table{
+  width: 100%;
+  th,
+  tr,
+  td{
+    border: 2px solid black;
+    padding: 10px;
+  }
+}
+
+.common{
+  width: 30%;
+  background-color: #d0fdff;
+}
+.flash {
+  color: $black;
+  text-align: center;
+  background-color: $yellow;
+  &__alert{
+    background-color: red;
+  }
+  &__notice {
+    background-color: $blue;
+  }
+}

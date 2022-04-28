@@ -1,0 +1,18 @@
+  <div id="fas fa-flag<%= task.id %>">
+    <div id="favorite_task_<%= task.id %>">
+      <% if task.favorited_by?(current_customer) %>
+        <%= link_to task_favorites_path(task), method: :delete, remote: true do %>
+          <i class="fas fa-flag"></i><%= task.favorites.count %> 応援する
+        <% end %>
+      <% else %>
+        <%= link_to task_favorites_path(task), method: :post, remote: true do %>
+          <i class="fas fa-flag"></i><%= task.favorites.count %>　応援する
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+

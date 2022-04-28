@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h4>コメント一覧</h4>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>コメント</th>
+          </tr>
+        </thead>
+         <tbody>
+          <% @task_comments.each do |task_comment| %>
+            <tr>
+              <td>
+                <%= task_comment.customer.name %>
+              </td>
+              <td>
+                <%= task_comment.comment %>
+              </td>
+              <td>
+                <%= link_to "削除", admin_task_comment_path(task_comment), method: :delete %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to "back", admin_customers_path %>
+      <%= paginate @task_comments %>
+    </div>
+  </div>
+</div>
