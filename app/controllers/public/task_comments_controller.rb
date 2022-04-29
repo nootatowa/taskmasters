@@ -1,6 +1,6 @@
 class Public::TaskCommentsController < ApplicationController
   def create
-    @task = Task.find_by(params[:task_id])
+    @task = Task.find(params[:task_id])
     @comment = current_customer.task_comments.new(comment_params)
     @comment.task_id = @task.id
      @comment.save
