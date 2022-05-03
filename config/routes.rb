@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   scope module: :public do
       get '/homes/guest_sign_in', to: 'homes#guest_sign_in'
       root "homes#top"
-      
+
     resources :customers, only: [:index,:show,:edit,:update] do
       member do
         get :favorites
@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     get 'customers/my_page' => 'customers#show'
     get 'customers/:id/unsubscribe' =>'customers#unsubscribe',as: 'customer_unsubscribe'
     patch 'customers/:id/withdraw'  =>'customers#withdraw',as: 'customer_withdraw'
-    get "/search", to: "searchs#search"
     post '/tasks/:id/done' => 'tasks#done',   as: 'done'
 
 
