@@ -6,6 +6,6 @@ class Task < ApplicationRecord
   validates :title, length: { in: 1..255 }
 
   def favorited_by?(customer)
-    favorites.exists?(customer_id: customer.id)
+      favorites.exists?(customer_id: customer.id)
   end
 end
