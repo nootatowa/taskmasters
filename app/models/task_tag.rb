@@ -1,2 +1,0 @@
-class TaskTag < ApplicationRecord
-end
