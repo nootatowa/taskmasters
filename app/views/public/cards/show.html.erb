@@ -15,10 +15,10 @@
       </div>
         <% if customer_signed_in? && @card.written_by?(current_customer) %>
           <div class="cardContents_btnArea">
-          <%= link_to '編集する', edit_task_card_path(@card.task, @card), class: "edit_btn" %>
-          <%= link_to '削除をする', task_card_path(@card.task, @card), class: "text-danger delete_btn", method: :delete, data: { confirm: "削除して大丈夫ですか?" } %>
+            <%= link_to '編集する', edit_task_card_path(@card.task, @card), class: "edit_btn" %>
+            <%= link_to '削除をする', task_card_path(@card.task, @card), class: "text-danger delete_btn", method: :delete, data: { confirm: "削除して大丈夫ですか?" } %>
         <% end %>
-      </div>
+          </div>
     </div>
   </div>
 </div>
