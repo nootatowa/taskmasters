@@ -12,12 +12,7 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
   end
 
-
-
-  private
-  def task_params
-    @task = Task.find(params[:task_id])
-  end
+ private
 
   def set_favorite
     @task = Task.find(params[:task_id])

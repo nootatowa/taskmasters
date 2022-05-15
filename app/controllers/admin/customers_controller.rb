@@ -2,19 +2,13 @@ class Admin::CustomersController < ApplicationController
     before_action :authenticate_admin!
     before_action :set_customer, only: %i(show edit update)
 
-    def show
-    end
-
     def index
       @customers = Customer.page(params[:page])
     end
 
-    def edit
-    end
-
     def update
       @customer.update(customer_params)
-      redirect_to admin_customers_path
+        redirect_to admin_customers_path
     end
 
     private

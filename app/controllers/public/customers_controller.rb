@@ -27,8 +27,8 @@ class Public::CustomersController < ApplicationController
     def withdraw
       # is_deletedカラムをtrueに変更することにより削除フラグを立てる
       @customer.update(is_deleted: true)
-      reset_session
-      redirect_to root_path,flash: { notice: '退会が完了しました' }
+        reset_session
+        redirect_to root_path,flash: { notice: '退会が完了しました' }
     end
 
 
@@ -39,14 +39,15 @@ class Public::CustomersController < ApplicationController
     end
 
    private
+
     def customer_params
-     params.require(:customer).permit(:name)
+      params.require(:customer).permit(:name)
     end
 
     def ensure_correct_customer
       @customer = Customer.find(params[:id])
       unless @customer == current_customer
-      redirect_to tasks_path
+        redirect_to tasks_path
       end
     end
 

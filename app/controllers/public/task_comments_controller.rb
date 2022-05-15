@@ -1,7 +1,7 @@
 class Public::TaskCommentsController < ApplicationController
+  before_action :set_task_comment, only: %i(create destroy)
 
   def create
-    @task = Task.find(params[:task_id])
     @comment = current_customer.task_comments.new(comment_params)
     @comment.task_id = @task.id
     @comment.save
@@ -11,14 +11,17 @@ class Public::TaskCommentsController < ApplicationController
 
   def destroy
     TaskComment.find(params[:id]).destroy
-    flash.now[:alert] = 'コメントを削除しました'
-    @task = Task.find(params[:task_id])
+     flash.now[:alert] = 'コメントを削除しました'
   end
 
-   private
+ private
 
   def comment_params
     params.require(:task_comment).permit(:comment)
+  end
+
+  def set_task_comment
+    @task = Task.find(params[:task_id])
   end
 
 end

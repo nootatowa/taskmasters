@@ -14,7 +14,7 @@ class Customer < ApplicationRecord
     update(experience_point: experience_point + 2)
     result = LevelSetting.where("threshold <= ?", experience_point)
     if  result.any?
-    if  level !=  result.last.level
+    if  level != result.last.level
         level = result.last.level
         self.save
     end
