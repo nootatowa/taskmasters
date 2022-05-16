@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     resources :task_comments, only: [:index,:destroy]
   end
 
- # 顧客用
-# URL /customers/sign_in ...
+  # 顧客用
+  # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -36,14 +36,11 @@ Rails.application.routes.draw do
     post '/tasks/:id/done' => 'tasks#done',   as: 'done'
 
 
-
     resources :tasks do
       resources :task_comments, only: [:create,:destroy]
       resources :cards
       get 'tasks/reward',to: "tasks#reward"
-      get 'confirm'
       resource :favorites, only: [:create,:destroy]
     end
   end
 end
-
