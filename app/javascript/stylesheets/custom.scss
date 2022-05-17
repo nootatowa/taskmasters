@@ -1,7 +1,6 @@
 body {
   overflow: visible;
 }
-
 .wrapper {
   position: relative;
   padding-bottom: 40px;
@@ -14,13 +13,12 @@ body {
 .alert {
   display: none;
 }
-
 .footer{
   background: #01a0fe;
   color:white;
 width: 100%;
- position: fixed;/*←絶対位置*/
-bottom: 0; /*下に固定*/
+ position: fixed;
+bottom: 0;
 }
 .header{
   background: #01a0fe;
@@ -61,12 +59,12 @@ bottom: 0; /*下に固定*/
             display: inline-block;
             margin-left: 10px;
             font-size: 20px;
-            }
           }
         }
       }
     }
   }
+}
 .customer_table{
   width: 100%;
   th,
@@ -76,7 +74,6 @@ bottom: 0; /*下に固定*/
     padding: 10px;
   }
 }
-
 .common{
   width: 30%;
   background-color: #d0fdff;

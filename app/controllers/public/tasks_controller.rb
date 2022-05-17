@@ -35,15 +35,7 @@ class Public::TasksController < ApplicationController
   def done
     @task.update(status: "Done")
     @tasks = Task.all.includes(:customer)
-    @done_customer = current_customer
-    @done_customer.update(experience_point: @done_customer.experience_point + 5)
-     result = LevelSetting.where("threshold <= ?", @done_customer.experience_point)
-    if result.any?
-      if @done_customer.level != result.last.level
-         @done_customer.level = result.last.level
-         @done_customer.save
-      end
-    end
+    current_customer.update_task_level
       redirect_to task_tasks_reward_path(@task.id),flash: { notice: 'タスク完了! 経験値が５上がりました' }
   end
 

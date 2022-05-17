@@ -1,4 +1,4 @@
-  <div class="container">
+ <div class="container">
    <div class="row">
     <div class="col" style="text-align: center">
       <h3 class="my-5">本当に退会しますか？</h3>
@@ -9,7 +9,7 @@
          本当に退会してよろしいですか？
         </p>
        </div>
-     </div>
+    </div>
    </div>
     <div class="row mt-5 d-flex justify-content-center">
      <div class="col-2">
@@ -19,4 +19,4 @@
        <%= link_to "退会する", customer_withdraw_path(@customer.id), method: :patch, data: { confilm: "本当に退会しますか？" },class:'btn btn-sm btn-danger' %>
       </div>
     </div>
-  </div>
+ </div>

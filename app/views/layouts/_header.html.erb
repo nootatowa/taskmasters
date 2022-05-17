@@ -11,10 +11,10 @@
               <i class="far fa-user-circle"></i>
           <% end %>
           <div class ="text-right" >
-          <%= link_to new_task_path, class: "nav-link text-right" do %>
-              <span class="mr-1">タスク作成</span>
-              <i class="fas fa-edit"></i>
-          <% end %>
+            <%= link_to new_task_path, class: "nav-link text-right" do %>
+                <span class="mr-1">タスク作成</span>
+                <i class="fas fa-edit"></i>
+            <% end %>
           </div>
           <%= link_to tasks_path, class: "nav-link" do%>
               <span class="mr-1"> タスク一覧</span>
@@ -29,8 +29,6 @@
               <span class="mr-1"> サインアウト</span>
               <i class="fas fa-sign-out-alt"></i>
               <% end %>
-
-
 
             <% else %>
              <div class ="text-left" >

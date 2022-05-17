@@ -1,63 +1,59 @@
-<div class="container">
-  <div class="row">
- 	</div>
+  <div class="container">
     <div class="form-group row">
       <div class="col-2">
         <h3><strong>タスク情報</strong></h3>
       </div>
        <%= render "public/favorites/favorite", task: @task %>
     </div>
-      <div class="row mb-5">
-        <div class="col-7">
-          <table class="customer_table">
-   	       <tbody>
-            <tr>
-              <td class=common>タスク名
-                  <% if customer_signed_in? && current_customer.id == @task.customer_id %>
-                  <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(@task)) %>
-                  <% end %>
-              </td>
-              <td><%= @task.title %></td>
-            </tr>
-            <tr>
-              <td class=common>タスク内容</td>
-              <td><%= @task.body %></td>
-            </tr>
-            <tr>
-              <td class=common>タスク詳細</td>
-              <td>
-              <% @task.cards.each do |card| %>
-              <%= link_to task_card_path(@task,card.id) do %>
-                <p><%= card.title %></p>
+    <div class="row mb-5">
+      <div class="col-7">
+        <table class="customer_table">
+ 	       <tbody>
+          <tr>
+            <td class=common>タスク名
+                <% if customer_signed_in? && current_customer.id == @task.customer_id %>
+                <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_task_path(@task)) %>
                 <% end %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td class=common>タスク状況</td>
-              <% if customer_signed_in? && current_customer.id == @task.customer_id %>
-              <td><%= link_to "タスクを完了しご褒美を受け取る",task_tasks_reward_path(@task.id) %></td>
+            </td>
+            <td><%= @task.title %></td>
+          </tr>
+          <tr>
+            <td class=common>タスク内容</td>
+            <td><%= @task.body %></td>
+          </tr>
+          <tr>
+            <td class=common>タスク詳細</td>
+            <td>
+            <% @task.cards.each do |card| %>
+            <%= link_to task_card_path(@task,card.id) do %>
+              <p><%= card.title %></p>
               <% end %>
-            </tr>
-            <tr>
-              <td class=common>作成情報</td>
-              <td><div><%= @task.customer.name %></div>
-              <div><%= @task.created_at.strftime('%Y/%m/%d') %></div>
-              </td>
-            </tr>
-           </tbody>
-	        </table>
-		    </div>
-		      <div class="col-md-5">
-            <h5>応援コメントはこちらから</h5>
-              <div class="new-comment">
-                <%= render 'public/task_comments/comment_form', task: @task, task_comment: @task_comment %>
-              </div>
-                <div id="task_comments">
-                  <%= render 'public/task_comments/task_comments', task: @task %>
-                </div>
-			    </div>
-		  </div>
-</div>
-
-
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class=common>タスク状況</td>
+            <% if customer_signed_in? && current_customer.id == @task.customer_id %>
+            <td><%= link_to "タスクを完了しご褒美を受け取る",task_tasks_reward_path(@task.id) %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <td class=common>作成情報</td>
+            <td><div><%= @task.customer.name %></div>
+            <div><%= @task.created_at.strftime('%Y/%m/%d') %></div>
+            </td>
+          </tr>
+         </tbody>
+        </table>
+	    </div>
+      <div class="col-md-5">
+        <h5>応援コメントはこちらから</h5>
+          <div class="new-comment">
+            <%= render 'public/task_comments/comment_form', task: @task, task_comment: @task_comment %>
+          </div>
+          <div id="task_comments">
+            <%= render 'public/task_comments/task_comments', task: @task %>
+          </div>
+	    </div>
+	  </div>
+  </div>

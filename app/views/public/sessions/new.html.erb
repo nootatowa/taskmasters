@@ -18,28 +18,28 @@
     <div class="row mb-3">
       <label for="inputEmail3" class="col-sm-2 col-form-label offset-2">名前</label>
       <div class="col-sm-8">
-      <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
+        <%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
       </div>
     </div>
 
     <div class="row mb-3">
       <label for="inputEmail3" class="col-sm-2 col-form-label offset-2">メールアドレス</label>
       <div class="col-sm-8">
-      <%= f.email_field :email, class: "form-control", placeholder: "emailを入力してください" ,autocomplete: "email" %>
+        <%= f.email_field :email, class: "form-control", placeholder: "emailを入力してください" ,autocomplete: "email" %>
       </div>
     </div>
 
     <div class="row mb-4">
       <label for="inputPassword3" class="col-sm-2 col-form-label offset-2">パスワード</label>
       <div class="col-sm-8">
-      <%= f.password_field :password, class: "form-control", placeholder:"パスワードを入力してください", autocomplete: "off" %>
+        <%= f.password_field :password, class: "form-control", placeholder:"パスワードを入力してください", autocomplete: "off" %>
       </div>
     </div>
 
 
     <div class="row mb-5">
       <div class="col-2 offset-4">
-      <%= f.submit "ログイン", class:"button"%>
+        <%= f.submit "ログイン", class:"button"%>
       </div>
     </div>
   <% end %>
@@ -54,5 +54,5 @@
   </div>
   <div class="row mt-4">
     <h5 class="col-5 offset-4">登録がお済みでない方  <%= link_to "こちら", new_customer_registration_path %> からログインしてください</h5>
- </div>
- </div>
+  </div>
+</div>

@@ -1,28 +1,23 @@
  <div class="message-container">
-      <h3 class="text-center mb-4 mt-1">管理者ログイン</h3>
-      <div class="container">
-        <div class="row">
-          <div class="text-center col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="field mb-4">
-                <%= f.label :メールアドレス %>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-              </div>
-
-              <div class="field">
-                <%= f.label :パスワード　　%>
-                <%= f.password_field :password, autocomplete: "current-password" %>
-              </div>
-              <div class="actions mb-4 mt-4">
-                <%= f.submit "ログイン", class: "button" %>
-              </div>
-            <% end %>
+    <h3 class="text-center mb-4 mt-1">管理者ログイン</h3>
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field mb-4">
+              <%= f.label :メールアドレス %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <div class="field">
+              <%= f.label :パスワード　　%>
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+            <div class="actions mb-4 mt-4">
+              <%= f.submit "ログイン", class: "button" %>
+            </div>
+          <% end %>
           <%= render "admin/shared/links" %>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-</main>
-
-
+ </div>

@@ -1,7 +1,7 @@
 <div class="topPage">
   <h6>ユーザー詳細ページ</h6>
   <div class="form-group row">
-    <div style="text-align:center"><h><%= @customer.name %></h5>
+    <div style="text-align:center"><h><%= @customer.name %>
        <%= link_to(content_tag(:i, '', class: "fas fa-edit"), edit_customer_path) %>
         Lv.<%= @customer.level %>
         exp<%= @customer.experience_point %>
@@ -13,12 +13,9 @@
       </div>
   </div>
     <div class="listWrapper">
-        <% @tasks.each do |task| %>
+      <% @tasks.each do |task| %>
         <%= render "public/tasks/index", task: task %>
       <% end %>
     </div>
       <%= paginate @tasks %>
 </div>
-
-
-

@@ -20,5 +20,14 @@ class Customer < ApplicationRecord
     end
     end
   end
-
+  def update_task_level
+    update(experience_point: experience_point + 5)
+    result = LevelSetting.where("threshold <= ?", experience_point)
+    if  result.any?
+    if  level != result.last.level
+        level = result.last.level
+        self.save
+    end
+    end
+  end
 end
