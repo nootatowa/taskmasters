@@ -15,7 +15,6 @@ class Customer < ApplicationRecord
     result = LevelSetting.where("threshold <= ?", experience_point)
     if  result.any?
     if  level != result.last.level
-        level = result.last.level
         self.save
     end
     end
@@ -25,7 +24,6 @@ class Customer < ApplicationRecord
     result = LevelSetting.where("threshold <= ?", experience_point)
     if  result.any?
     if  level != result.last.level
-        level = result.last.level
         self.save
     end
     end
