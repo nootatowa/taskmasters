@@ -4,10 +4,10 @@ class Public::CardsController < ApplicationController
   before_action :correct_customer_new, only: [:new]
   before_action :set_card, only: %i(show edit update)
   before_action :set_task_card, only: %i(new show)
+  before_action :set_task_id, only: %i(new create)
 
 
   def new
-    @task = Task.find(params[:task_id])
     if params[:task_id].to_i == @task.id
     @card = Card.new
     else
@@ -39,7 +39,7 @@ class Public::CardsController < ApplicationController
   end
 
   private
-  
+
   def card_params
     params.require(:card).permit(:title, :memo, :task_id)
   end
@@ -65,4 +65,7 @@ class Public::CardsController < ApplicationController
     @task = Task.find_by(id: params[:task_id])
   end
 
+  def set_task_id
+   @task = Task.find(params[:task_id])
+  end
 end
