@@ -10,7 +10,7 @@ class Public::TaskCommentsController < ApplicationController
 
 
   def destroy
-    TaskComment.find(params[:id]).destroy
+    current_customer.task_comments.find(params[:id]).destroy
      flash.now[:alert] = 'コメントを削除しました'
   end
 
