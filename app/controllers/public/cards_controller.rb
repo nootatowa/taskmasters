@@ -1,8 +1,8 @@
 class Public::CardsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :correct_customer, only: [:edit, :update]
+  before_action :correct_customer, only: [:edit, :update,:destroy,:edit]
   before_action :correct_customer_new, only: [:new]
-  before_action :set_card, only: %i(show edit update)
+  before_action :set_card, only: %i(show  update edit)
   before_action :set_task_card, only: %i(new show)
   before_action :set_task_id, only: %i(new create)
 
@@ -33,8 +33,9 @@ class Public::CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find(params[:id])
-    @card.destroy
+      @card = Card.find(params[:id])
+      @card.destroy
+      # @card.current_customer.task.destroy
       redirect_to customer_path(current_customer.id),flash: { notice: 'タスク詳細を削除しました' }
   end
 

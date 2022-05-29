@@ -2,7 +2,7 @@ class Public::TasksController < ApplicationController
   before_action :authenticate_customer!
   before_action :correct_customer, only: [:edit, :updategit ]
   before_action :correct_customer_reward, only: [:reward]
-  before_action :set_task, only: %i(done edit update)
+  before_action :set_task, only: %i(done update)
 
   def new
     @task = Task.new
@@ -38,6 +38,10 @@ class Public::TasksController < ApplicationController
     current_customer.update_task_level
       redirect_to task_tasks_reward_path(@task.id),flash: { notice: 'タスク完了! 経験値が５上がりました' }
   end
+  
+  def edit 
+     current_customer.tasks.find_by(id: params[:id])
+  end
 
   def update
     if @task.update(task_params)
@@ -47,8 +51,9 @@ class Public::TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
+    # @task = Task.find(params[:id])
+    # @task.destroy
+    current_customer.tasks.find(params[:id]).destroy
     redirect_to customer_path(current_customer.id),flash: { notice: 'タスクの削除が完了しました' }
   end
 
