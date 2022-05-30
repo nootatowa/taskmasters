@@ -1,8 +1,8 @@
 class Public::TasksController < ApplicationController
   before_action :authenticate_customer!
-  before_action :correct_customer, only: [:edit, :updategit ]
+  before_action :correct_customer, only: [:edit, :update ]
   before_action :correct_customer_reward, only: [:reward]
-  before_action :set_task, only: %i(done update)
+  before_action :set_task, only: %i(done update edit)
 
   def new
     @task = Task.new
@@ -37,10 +37,6 @@ class Public::TasksController < ApplicationController
     @tasks = Task.all.includes(:customer)
     current_customer.update_task_level
       redirect_to task_tasks_reward_path(@task.id),flash: { notice: 'タスク完了! 経験値が５上がりました' }
-  end
-  
-  def edit 
-     current_customer.tasks.find_by(id: params[:id])
   end
 
   def update
