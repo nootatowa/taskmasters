@@ -8,4 +8,9 @@ class Task < ApplicationRecord
   def favorited_by?(customer)
       favorites.exists?(customer_id: customer.id)
   end
+
+  def self.privacy_task(customer)
+    return self.where.not("privacy = 2 AND customer_id <> #{customer.id}")
+  end
+
 end

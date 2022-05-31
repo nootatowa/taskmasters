@@ -9,7 +9,7 @@ class Public::TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.where.not("privacy = 2 AND customer_id <> #{current_customer.id}").page(params[:page])
+    @tasks = Task.all.privacy_task(current_customer).page(params[:page])
     @customer = Customer.all
   end
 
