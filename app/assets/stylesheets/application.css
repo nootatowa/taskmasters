@@ -14,3 +14,7 @@
  *= require_self
  */
 
+
+@media screen {
+　　body {font-size: 16px; }
+}
