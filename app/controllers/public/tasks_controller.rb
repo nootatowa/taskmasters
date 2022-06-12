@@ -47,8 +47,7 @@ class Public::TasksController < ApplicationController
   end
 
   def destroy
-    # @task = Task.find(params[:id])
-    # @task.destroy
+ 
     current_customer.tasks.find(params[:id]).destroy
     redirect_to customer_path(current_customer.id),flash: { notice: 'タスクの削除が完了しました' }
   end
